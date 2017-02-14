@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage[hmargin=2cm,bmargin=3cm,tmargin=4.5cm,centering]{geometry}
+\usepackage{tikzpagenodes}
+\usetikzlibrary{calc}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{atbegshi}
+
+\definecolor{blue}{RGB}{25,25,175}
+\newcommand\Header{%
+\begin{tikzpicture}[remember picture,overlay]
+\fill[blue]
+  (current page.north west) -- (current page.north east) --
+  ([yshift=50pt]current page.north east|-current page text area.north east) --
+  ([yshift=50pt,xshift=-3cm]current page.north|-current page text area.north) --
+  ([yshift=10pt,xshift=-5cm]current page.north|-current page text area.north) --
+  ([yshift=10pt]current page.north west|-current page text area.north west) -- cycle;
+\node[font=\sffamily\bfseries\color{white},anchor=east,
+  xshift=-1.5cm,yshift=-1.3cm] at (current page.north east)
+  {\fontsize{50}{60}\selectfont COS301 Phase 1};
+\end{tikzpicture}%
+}
+\newcommand\Footer{%
+\begin{tikzpicture}[remember picture,overlay]
+\fill[blue]
+  (current page.south west) -- (current page.south east) --
+  ([yshift=-40pt]current page.south east|-current page text area.south east) --
+  ([yshift=-40pt,xshift=-3cm]current page.south|-current page text area.south) --
+  ([xshift=-5cm,yshift=-10pt]current page.south|-current page text area.south) --
+  ([yshift=-10pt]current page.south west|-current page text area.south west) -- cycle;
+\node[yshift=0.75cm,font=\ttfamily\bfseries\color{white}] at (current page.south) {\fontsize{20}{24}\selectfont EGGSHELL};
+\end{tikzpicture}%
+}
+
+\pagestyle{empty}
+\AtBeginShipout{\Header\Footer}
+\AtBeginShipoutFirst{\Header\Footer}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE COS 301 EGGSHELL   \par}
+	\vspace{1cm}
+	{\scshape\Large PHASE ONE \par}
+	\vspace{1.5cm}
+	{\huge\bfseries NavUP Proposal\par}
+	\vspace{2cm}
+	{\Large\itshape  Dawie Pritchard 13104340 \\ Peter Rayner 14001757 \\ Henri-Dawid Haasbroek 15046657 \\ Quinton Swanepoel 15245510 \\ Hendrik van der Mewe 15101283 \\ Barnard van Tonder 15008992 \\ Tshepiso Maleka 13267991\par}
+	
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+\centering
+\section{Introduction}
+In this document we will discuss a solution for the concept of the navUP system. Which will allow students to be able to navigate through campus to any lecture hall as fast as possible and least congested route as possible.
+\subsection {Purpose}
+The sole purpose of this document is to define the requirements of the system as well as the technologies that may ( or may not be used ) to develop this product, as well as different ideas that may be plausible to implement based on difficulty as well as time efficiency. We will try and do an in-depth analysis of the concept of navUP as well as technologies already available for us on campus and technologies we can utilize to implement this product. We will attempt to find the best solution for the product as well as iron out issues that may arise later during the course of the project. 
+\subsection {Scope}
+Design and implement a mobile application that uses the University of Pretoria's campus wi-fi that will deliver a navigational service to users via their smart devices. The application will be named NavUp. The application should contain all the basic functionalities that are already found in common navigation systems.Other functionality required includes searching, saving and providing directions to a location. A UI(User-Interface) is also required to allow users to interact with the application. It should be usable by different types of users allowing them to enter different kinds of information into the system regarding venues, points of interest, events and activities using multiple types of devices and services. (See References Page)
+\subsection{References}
+References Pertaining the scope:
+COS 301 Software Engineering specification found at www.cs.up.ac.za/courses/COS301
+\subsection{Overview}
+An in detail overview will be given within the rest of the sections. Including ideas, technologies, charateristics etc.
+\newpage
+\centering
+\section{Overall Description}
+\subsection{System Environment}
+The NavUP system will have 4  basic mediums in which communication will be spread: \\ 1.Students(Users) \\ 2.Mobile Application User Interface( UI)\\ 3.Campus Wi-Fi Hot Spots \\ 4.GPS 
+\subsubsection{Users}
+The users will connect to the mobile application through the campus wi-fi, every user will be connected to a particular hotspot. Every connection from a user to a hotspot will be tracked in real time and that information will be used accordingly to monitor how many people are in a certain location.
+\subsubsection {Mobile Application User Interface(UI)}
+Users will use the UI to select where they want to go as well as selecting the shortest route or the fastest route based on hot-spot connections. The mobile application will then use GPS to locate the user and provide an optimal route.
+\subsubsection {Campus Wi-Fi Hot Spots}
+The mobile application will keep track as to how many people are logged in and then use GPS to determine how many people are in the vicinity of an area which will also be done using the Wi-Fi hotspot using real time tracking. This will enable users to keep track as to how many people are in a certain location and will allow use to avoid highly congested routes. 
+\subsubsection{GPS-needs checking-}
+GPS will be used to keep track of users through the mobile application. This will allow users to see where they are currently(even when wi-fi is not available) and allow us to determine what will be the best route for the user to their venue. Every user will also be able to see how many people are in a certain location(hotspots) as well as choose the shortest route or fastest route based on the location of the hotspots.
+\subsection {Functional Requirements Specification}
+This is where you guys should add the use cases and diagrams!
+\newpage
+\centering
+\section{Specific Requirements}
+\subsection{Functional Requirements}
+\subsubsection{Find Location}
+The user accesses the mobile application and searches for the location he desires to go too. Pre-Condition: The user needs to be connected to wi-fi and will require the GPS to be activated on the smartphone. Path to locating: Login to app, enable wi-fi, enable GPS, Search location using UI, confirm destination and go to the given location.
+
+\subsubsection{Update Location}
+The users current location is updated whilst moving via real time tracking through the GPS. Pre-Condition: The user needs to be connected to wi-fi and have their GPS activated. Path to locating: Login in to app,enable wi-fi,enable GPS, search location and confirm location.
+
+\subsubsection{Add Recently Visited Locations}
+When the useer is logged into the application they will have an option to add recently visited locations to their favourite locations. Path to locating: Login to mobile application, go to favourites tab and click on add recent locations.
+
+\subsubsection{Remove Locations}
+The user when logged into the mobile application will have an option to remove recently visited locations from their favourite locations. Path to locating: Login to mobile application. go to favourites tab, click on remove locations.
+
+\subsubsection{Track Time to location}
+The user will be able to see an estimate time to destination using a timer on the application. Path to locating: Login to mobile application, enable wi-fi, enable GPS, search location, confirm location and time to destination will be visible on the UI. 
+\subsubsection{Real time tracking of people connected to a wi-fi hotspot-needs checking}
+The user will be able to see what path will be the best option based on the tracking of currently connected devices to a certain hot-spot.Path to locating: Login to mobile application, enable wi-fi, enable GPS, search location, confirm route based on hotspot information.
+\subsubsection{Suggest Locations}
+The mobile application will be able to suggest Locations based by tracking your daily movements.Path to locating: login to mobile application, visible on home screen
+\subsubsection{Update path based on traffic of students}
+The wi-fi tracking may change whilst a path has already been generated, it will then automatically update the path whilst you are walking.
+\subsubsection{Generate path to location}
+The GPS will acquire the users current location and destination and will generate a path between the two.
+\subsubsection{Log out of mobile application}
+The user will be able to log out of the application when not connected to GPS or Wi-fi as well as manually.
+\subsubsection{Log in to mobile application}
+The user will be able to log into the mobile application via the Wi-Fi and gain access to his/her individual profile.
+\subsubsection{Add timetable to mobile application}
+The mobile application will have a timetable feature which will enable the app to automatically generate paths from certain locations based on the users individual timetable. 
+\subsubsection{Remove timetable to mobile application}
+The mobile application will let the user remove their own individual timetable based on each semester, or a mistake made.
+\subsubsection{Voice Input for location}
+Users will be able to use voice input when trying to access a certain location.
+\subsubsection{Voice output confirming location}
+The mobile application will have a voice response confirming your location.
+\subsubsection{UI confirmation of location}
+The mobile application will give visual confirmation of a users choice.
+\subsubsection{Visual Representation of path to location}
+The mobile application will generate a moving map which the user will be able to visually see as they walk, and will be updatde based on the users needs.
+\subsubsection{Search Location}
+The mobile application will enable a feature where the users will be able to search locations.
+
+\newpage
+\centering
+\section{Non-Functional Requirements}
+ 
+Please Complete This....
+
+\newpage
+\centering
+\section{Tracability Matrix}
+ 
+Please Complete This...
+
+\newpage
+\centering
+\section{Non trivial matrix using actor system interaction Modelling}
+ 
+Please Complete this....
+
+\section{Notes to what still needs to be done}
+The user case diagrams should be incoorperated into the functional requirements specification
+The functional requirements needs to be modelled, See SRS Example on the internet 
+I tried to keep the reqs and project as lowly coupled as I could. If you can try and make it better you are welcome to have a look.
+Any problems with this document or any uncertainty, please message me on the whatsapp group or individually.
+Any input will be appreciated.
+Thanks Guys!
+
+
+\end{document}
